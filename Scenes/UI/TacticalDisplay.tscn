@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/UI/ThrusterControlPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/StatusDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/TurnControl.tscn" type="PackedScene" id=3]
+
+[node name="TacticalDisplay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HudContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="HudLeft" type="VBoxContainer" parent="MarginContainer/HudContainer"]
+margin_right = 250.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="StatusDisplay" parent="MarginContainer/HudContainer/HudLeft" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 250.0
+
+[node name="HudCenter" type="VBoxContainer" parent="MarginContainer/HudContainer"]
+margin_left = 254.0
+margin_right = 750.0
+margin_bottom = 580.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Space" type="Control" parent="MarginContainer/HudContainer/HudCenter"]
+margin_right = 496.0
+margin_bottom = 536.0
+size_flags_vertical = 3
+
+[node name="TurnControl" parent="MarginContainer/HudContainer/HudCenter" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 540.0
+margin_right = 496.0
+margin_bottom = 580.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 40 )
+
+[node name="HudRight" type="VBoxContainer" parent="MarginContainer/HudContainer"]
+margin_left = 754.0
+margin_right = 1004.0
+margin_bottom = 580.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="Space" type="Control" parent="MarginContainer/HudContainer/HudRight"]
+margin_right = 250.0
+margin_bottom = 426.0
+size_flags_vertical = 3
+
+[node name="ThrusterControlPanel" parent="MarginContainer/HudContainer/HudRight" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 430.0
+margin_right = 250.0
+margin_bottom = 580.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 150 )

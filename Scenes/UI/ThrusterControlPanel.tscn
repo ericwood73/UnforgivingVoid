@@ -1,0 +1,172 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/ThrusterControlPanel.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/ThrusterControl.tscn" type="PackedScene" id=2]
+
+[node name="ThrusterControlPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
+rect_min_size = Vector2( 250, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 250, 250 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttitudeLabel" type="Label" parent="VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 14.0
+text = "Attitude"
+
+[node name="AttitudeControlGrid" type="GridContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 250.0
+margin_bottom = 76.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PitchLabel" type="Label" parent="VBoxContainer/AttitudeControlGrid"]
+margin_top = 1.0
+margin_right = 32.0
+margin_bottom = 15.0
+text = "Pitch"
+
+[node name="PitchControl" parent="VBoxContainer/AttitudeControlGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 42.0
+margin_right = 250.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+thrust_control_group_name = "pitch_control"
+increase_action = "pitch_up"
+decrease_action = "pitch_down"
+
+[node name="YawLabel" type="Label" parent="VBoxContainer/AttitudeControlGrid"]
+margin_top = 22.0
+margin_right = 32.0
+margin_bottom = 36.0
+text = "Yaw"
+
+[node name="YawControl" parent="VBoxContainer/AttitudeControlGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 42.0
+margin_top = 21.0
+margin_right = 250.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+thrust_control_group_name = "yaw_control"
+increase_action = "yaw_right"
+decrease_action = "yaw_left"
+
+[node name="RollLabel" type="Label" parent="VBoxContainer/AttitudeControlGrid"]
+margin_top = 43.0
+margin_right = 32.0
+margin_bottom = 57.0
+text = "Roll"
+
+[node name="RollControl" parent="VBoxContainer/AttitudeControlGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 42.0
+margin_top = 42.0
+margin_right = 250.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+thrust_control_group_name = "roll_control"
+increase_action = "roll_right"
+decrease_action = "roll_left"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 250.0
+margin_bottom = 84.0
+
+[node name="TranslationLabel" type="Label" parent="VBoxContainer"]
+margin_top = 88.0
+margin_right = 250.0
+margin_bottom = 102.0
+text = "Translation"
+
+[node name="TranslationControlGrid" type="GridContainer" parent="VBoxContainer"]
+margin_top = 106.0
+margin_right = 250.0
+margin_bottom = 162.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VerticalLabel" type="Label" parent="VBoxContainer/TranslationControlGrid"]
+margin_top = 1.0
+margin_right = 48.0
+margin_bottom = 15.0
+text = "Vertical"
+
+[node name="VerticalControl" parent="VBoxContainer/TranslationControlGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 250.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+thrust_control_group_name = "vertical_control"
+increase_action = "thrust_up"
+decrease_action = "thrust_down"
+
+[node name="LateralLabel" type="Label" parent="VBoxContainer/TranslationControlGrid"]
+margin_top = 21.0
+margin_right = 48.0
+margin_bottom = 35.0
+text = "Lateral"
+
+[node name="LateralControl" parent="VBoxContainer/TranslationControlGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_top = 20.0
+margin_right = 250.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+thrust_control_group_name = "lateral_control"
+increase_action = "thrust_right"
+decrease_action = "thrust_left"
+
+[node name="AxialLabel" type="Label" parent="VBoxContainer/TranslationControlGrid"]
+margin_top = 41.0
+margin_right = 48.0
+margin_bottom = 55.0
+text = "Axial"
+
+[node name="AxialControl" parent="VBoxContainer/TranslationControlGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_top = 40.0
+margin_right = 250.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+thrust_control_group_name = "axial_control"
+increase_action = "thrust_forward"
+decrease_action = "thrust_back"
+[connection signal="thruster_control_setting_changed" from="VBoxContainer/AttitudeControlGrid/PitchControl" to="." method="_on_thruster_control_setting_changed"]
+[connection signal="thruster_control_setting_changed" from="VBoxContainer/AttitudeControlGrid/YawControl" to="." method="_on_thruster_control_setting_changed"]
+[connection signal="thruster_control_setting_changed" from="VBoxContainer/AttitudeControlGrid/RollControl" to="." method="_on_thruster_control_setting_changed"]
+[connection signal="thruster_control_setting_changed" from="VBoxContainer/TranslationControlGrid/VerticalControl" to="." method="_on_thruster_control_setting_changed"]
+[connection signal="thruster_control_setting_changed" from="VBoxContainer/TranslationControlGrid/LateralControl" to="." method="_on_thruster_control_setting_changed"]
+[connection signal="thruster_control_setting_changed" from="VBoxContainer/TranslationControlGrid/AxialControl" to="." method="_on_thruster_control_setting_changed"]

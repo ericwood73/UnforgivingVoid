@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Motion.gd" type="Script" id=1]
+
+[node name="Motion" type="Node"]
+script = ExtResource( 1 )
+body_mass = 1000.0
+body_moment_of_inertia = Vector3( 354.167, 354.167, 41.67 )
