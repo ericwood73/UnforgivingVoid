@@ -44,28 +44,20 @@ thrust_level = 0.0
 transform = Transform( -8.14603e-08, 0.5, -8.14603e-08, 0, -8.14603e-08, -0.5, -0.5, -8.14603e-08, 1.32716e-14, 0.55, 0, -0.5 )
 max_thrust = 2
 thrust_level = 0.0
-yaw_control_direction = -1
-lateral_control_direction = -1
 
 [node name="RCS_Fwd_Port" parent="Modules/Thrusters" instance=ExtResource( 2 )]
 transform = Transform( -8.14603e-08, -0.5, 8.14603e-08, 0, -8.14603e-08, -0.5, 0.5, -8.14603e-08, 1.32716e-14, -0.55, 0, -0.5 )
 max_thrust = 2
 thrust_level = 0.0
-yaw_control_direction = 1
-lateral_control_direction = 1
 
 [node name="RCS_Aft_Stbd" parent="Modules/Thrusters" instance=ExtResource( 2 )]
 transform = Transform( -8.14603e-08, 0.5, -8.14603e-08, 0, -8.14603e-08, -0.5, -0.5, -8.14603e-08, 1.32716e-14, 0.55, 0, 0.5 )
 max_thrust = 2
 thrust_level = 0.0
-yaw_control_direction = 1
-lateral_control_direction = -1
 
 [node name="RCS_Aft_Port" parent="Modules/Thrusters" instance=ExtResource( 2 )]
 transform = Transform( -8.14603e-08, -0.5, 8.14603e-08, 0, -8.14603e-08, -0.5, 0.5, -8.14603e-08, 1.32716e-14, -0.55, 0, 0.5 )
 max_thrust = 2
 thrust_level = 0.0
-yaw_control_direction = -1
-lateral_control_direction = 1
 
 [node name="Crew" type="Node" parent="."]

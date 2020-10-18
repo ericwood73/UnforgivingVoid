@@ -22,35 +22,38 @@ func pitch(value := NAN):
 	if !is_nan(value):
 		_data.pitch = value
 	return _data.pitch
-	
+
 func yaw(value := NAN): 
 	if !is_nan(value):
 		_data.yaw = value
 	return _data.yaw
-	
+
 func roll(value := NAN): 
 	if !is_nan(value):
 		_data.roll = value
 	return _data.roll
-	
+
 func vertical(value := NAN): 
 	if !is_nan(value):
 		_data.vertical = value
 	return _data.vertical
-	
+
 func lateral(value := NAN): 
 	if !is_nan(value):
 		_data.lateral = value
-	return _data.lateral
-	
+	return _data.lateral	
+
 func axial(value := NAN): 
 	if !is_nan(value):
 		_data.axial = value
 	return _data.axial
-	
+
+func get(axis):
+	return _data[axis]
+
 func set(axis, value):
 	_data[axis] = value
-	
+
 func as_dictionary():
 	return _data.duplicate()
 	

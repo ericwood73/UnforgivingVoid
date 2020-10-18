@@ -1,4 +1,4 @@
 extends Node
 
-const THRUSTER_CONTROL_SETTINGS_GROUP_NAME = "thruster_control_settings"
-const ON_THRUSTER_CONTROL_SETTINGS_CHANGED = "on_thruster_control_settings_changed"
+const THRUSTER_CONTROL_GROUP_SETTINGS_GROUP_NAME = "thruster_control_group_settings"
+const ON_THRUSTER_CONTROL_GROUP_SETTINGS_CHANGED = "on_thruster_control_group_settings_changed"

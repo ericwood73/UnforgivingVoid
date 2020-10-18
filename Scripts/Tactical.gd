@@ -4,7 +4,7 @@ const StateManager = preload("res://Scripts/StateManager.gd")
 const Motion = preload("res://Scripts/Motion.gd")
 
 # State keys
-const THRUSTER_CONTROL_SETTINGS = "thruster_control_settings"
+const THRUSTER_CONTROL_GROUP_SETTINGS = "thruster_control_group_settings"
 
 var current_time_step = 0
 
@@ -26,6 +26,7 @@ func _set_active_spacecraft(spacecraft):
 	active_spacecraft = spacecraft
 	active_state = spacecraft.get_node("StateManager")
 	active_thrusters = spacecraft.thrusters
+	flight_controller.set_thrusters(active_thrusters)
 	$Camera.update_target(spacecraft)
 
 func _attach_state_managers():
@@ -51,25 +52,11 @@ func _advance(delta):
 	active_state.advance(delta, state_updated, _next_state_func_ref)
 	
 	if (!state_updated):
-		var current_state = active_state.get_state();
-	
-		# Restore flight control settings from state
-		_restore_thruster_control_settings(current_state[THRUSTER_CONTROL_SETTINGS])
+		_restore_state()
 
 func _rewind(delta):
 	active_state.rewind(delta)
-	var current_state = active_state.get_state();
-	
-	# Restore flight control settings from state
-	_restore_thruster_control_settings(current_state[THRUSTER_CONTROL_SETTINGS])
-	
-	# Restore thrust levels from state
-	
-	# Restore propellant levels from state
-	
-	# Restore position and orientation for active spacecraft
-	
-	# Restore position and orientation for other combatants and projectiles
+	_restore_state()
 	
 	# Update the flight control settings
 #	active_thrust_controller.update_control_settings(active_state.get_state("flight_control_settings"))
@@ -114,8 +101,22 @@ func _get_thruster_location(thruster):
 	# Thurster location is a vector from the center of mass to the thruster in body coordinates
 	return thruster.transform.origin - $Spacecraft.transform.origin	
 
+func _restore_state():
+	var current_state = active_state.get_state();
+	
+	# Restore flight control settings from state
+	_restore_thruster_control_settings(current_state[THRUSTER_CONTROL_GROUP_SETTINGS])
+	
+	# Restore thrust levels from state
+	
+	# Restore propellant levels from state
+	
+	# Restore position and orientation for active spacecraft
+	
+	# Restore position and orientation for other combatants and projectiles
+
 func _store_thruster_control_settings(new_state):
-	new_state[THRUSTER_CONTROL_SETTINGS] = flight_controller.get_thruster_control_settings()
+	new_state[THRUSTER_CONTROL_GROUP_SETTINGS] = flight_controller.get_thruster_control_group_settings()
 
 func _restore_thruster_control_settings(settings):
-	flight_controller.set_thruster_control_settings(settings)
+	flight_controller.set_thruster_control_group_settings(settings)
