@@ -1,4 +1,5 @@
 extends Spatial
+class_name GimballedCamera
 
 export var MIN_DISTANCE = 2
 export var MAX_DISTANCE = 10
