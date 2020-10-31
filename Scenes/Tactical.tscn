@@ -31,11 +31,13 @@ script = ExtResource( 3 )
 
 [node name="Projectiles" type="Node" parent="."]
 
-[node name="Combatants" type="Node" parent="."]
+[node name="AutonomousMunitions" type="Node" parent="."]
 
-[node name="TestSpacecraft" parent="Combatants" instance=ExtResource( 2 )]
+[node name="Spacecraft" type="Node" parent="."]
 
-[node name="Trail3D" type="ImmediateGeometry" parent="Combatants/TestSpacecraft"]
+[node name="TestSpacecraft" parent="Spacecraft" instance=ExtResource( 2 )]
+
+[node name="Trail3D" type="ImmediateGeometry" parent="Spacecraft/TestSpacecraft"]
 material_override = SubResource( 1 )
 script = ExtResource( 5 )
 length = 25.0
@@ -45,6 +47,7 @@ density_lengthwise = 50
 [node name="Camera" parent="." instance=ExtResource( 1 )]
 
 [node name="Target" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19422, 0, -10.5565 )
 mesh = SubResource( 3 )
 material/0 = null
 
@@ -52,7 +55,5 @@ material/0 = null
 
 [node name="FlightController" parent="." instance=ExtResource( 6 )]
 [connection signal="time_updated" from="TacticalDisplay/MarginContainer/HudContainer/HudCenter/TurnControl" to="." method="_on_TurnControl_time_updated"]
-
-[editable path="Combatants/TestSpacecraft"]
 
 [editable path="TacticalDisplay"]
